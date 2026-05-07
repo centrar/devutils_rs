@@ -1,186 +1,75 @@
-# 🚀 DevUtils - The Ultimate AI-Powered Developer Toolkit
+# 🚀 DevUtils: The Industrial-Grade AI Developer Engine
 
-**The fastest all-in-one CLI for developers who want everything working NOW.**
+![DevUtils Hero](assets/hero.png)
 
-[![Crates.io](https://img.shields.io/crates/v/devutils.svg)](https://crates.io/crates/devutils)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Build Status](https://github.com/devutils/devutils/workflows/CI/badge.svg)](https://github.com/devutils/devutils/actions)
+> **The first autonomous developer toolkit that doesn't just guess—it reasons.**
 
-## Why DevUtils?
+DevUtils is a State-of-the-Art (SOTA) autonomous Rust agent designed to bridge the gap between "AI Chat" and "Production Code." While other tools hallucinate, DevUtils **Plan-Act-Observes** and **Verifies** every change in a real-time semantic sandbox.
 
-Tired of juggling 10 different tools? DevUtils combines **AI autonomy**, **lightning-fast search**, **git workflows**, **cloud sync**, and **plugin ecosystem** into one CLI that actually gets things done.
+---
 
-### 🔥 Key Features
+## 🔥 Why it's SOTA (2026 Edition)
 
-- **🤖 AI Autonomous Agent** - "Fix all failing tests" → AI diagnoses, fixes, and commits
-- **⚡ Parallel Search** - ripgrep-speed file searching with multi-threading
-- **🔌 Plugin System** - 100+ plugins for every workflow
-- **☁️ Cloud Sync** - Sync config/plugins across devices (Dropbox, GDrive, S3)
-- **🎨 50+ Commands** - Git, AI, search, build, test, lint - everything in one place
-- **🖥️ Interactive TUI** - Beautiful lazygit-style interface
-- **📦 Project Templates** - Scaffold new projects instantly
+DevUtils isn't just a collection of scripts; it's a unified intelligence layer for your terminal:
 
-## Installation
+*   **🤖 Truly Autonomous Agent**: Powered by a 12-workflow parallel engine. It builds, tests, catches errors, and self-corrects until the task is **Verified 100%**.
+*   **🧠 Local Semantic RAG**: Uses `fastembed` with high-density vector embeddings to understand your entire repository's context—not just the file you're in.
+*   **⚡ Parallel Performance**: Built in high-concurrency Rust with `tokio` and `rayon`. Search, build, and test at the physical speed of your hardware.
+*   **🏗️ AST-Aware Context**: Uses `tree-sitter` to parse your code's structure (functions, structs, impls) to give the AI a deep architectural map.
+*   **🔌 Enterprise-Ready Plugin System**: 100+ community plugins plus a marketplace for custom developer workflows.
 
-### From crates.io (Recommended)
+---
 
+## 🛠️ Quick Start
+
+### 1. Installation
 ```bash
 cargo install devutils
 ```
 
-### From source
-
+### 2. Configure your AI
 ```bash
-git clone https://github.com/devutils/devutils.git
-cd devutils
-cargo build --release
+# Add your API key (Gemini, OpenAI, or local Ollama)
+export GEMINI_API_KEY="your-key-here"
 ```
 
-## Quick Start
-
-### 1. AI Autonomous Agent
-
+### 3. Deploy the Agent
 ```bash
-# Let AI fix your tests
-devutils autonomous "Fix the failing tests"
-
-# Add a new feature
-devutils autonomous "Add error handling to all API calls"
+# Hand off a complex task
+devutils agent "Migrate our auth system to JWT and add unit tests"
 ```
-
-### 2. Parallel Search
-
-```bash
-# Lightning-fast search
-devutils search "authentication" --parallel
-
-# Search with regex
-devutils grep "TODO.*FIXME" --parallel
-```
-
-### 3. Plugin System
-
-```bash
-# Install plugins
-devutils plugin install git-clean
-devutils plugin install docker-helper
-
-# List installed
-devutils plugin list
-
-# Run a plugin
-devutils plugin run git-clean
-```
-
-### 4. Project Templates
-
-```bash
-# Create a new Rust CLI project
-devutils init rust-cli myapp
-
-# Create a Python project
-devutils init python-cli mypyapp
-```
-
-## Commands Overview
-
-### AI Commands
-- `devutils autonomous <task>` - AI autonomous agent
-- `devutils generate <prompt>` - Generate code
-- `devutils explain` - Explain code
-- `devutils debug` - Debug errors
-
-### Search Commands  
-- `devutils search <pattern>` - Search codebase
-- `devutils find <pattern>` - Find files
-- `devutils grep <pattern>` - Grep search
-- `devutils search --parallel` - Parallel search (fast!)
-
-### Git Commands
-- `devutils status` - Git status
-- `devutils pick branch` - Pick branch (fuzzy)
-- `devutils pick commit` - Pick commit
-
-### Development
-- `devutils toolchain build` - Build project
-- `devutils toolchain test` - Run tests
-- `devutils toolchain lint` - Lint code
-- `devutils init <template>` - Create project
-
-### System
-- `devutils config` - Manage configuration
-- `devutils history` - Command history
-- `devutils repl` - Interactive REPL
-- `devutils daemon` - Background daemon
-
-## Configuration
-
-DevUtils uses `~/.devutils.toml` for configuration:
-
-```toml
-default_ai_provider = "openai"
-default_ai_model = "gpt-4"
-editor = "code"
-shell = "bash"
-keybindings = "vim"
-color_theme = "dark"
-```
-
-## Plugins
-
-DevUtils has a growing ecosystem of plugins:
-
-```bash
-# Search marketplace
-devutils plugin search docker
-
-# Install
-devutils plugin install <name>
-
-# Run
-devutils plugin run <name>
-```
-
-## Performance
-
-- **Parallel Search**: 10x faster than standard grep
-- **Startup Time**: <200ms (optimized with LTO)
-- **Binary Size**: ~7MB (statically linked)
-- **Memory Usage**: <50MB for most operations
-
-## Roadmap
-
-- [ ] Local AI (Ollama/llama.cpp integration)
-- [ ] Semantic code search
-- [ ] VS Code extension
-- [ ] More workflow templates
-- [ ] Team collaboration features
-
-## Contributing
-
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-```bash
-# Development setup
-git clone https://github.com/devutils/devutils.git
-cargo build
-cargo test
-```
-
-## License
-
-MIT License - see [LICENSE](LICENSE) for details.
-
-## Acknowledgments
-
-Built with love using:
-- [clap](https://github.com/clap-rs/clap) - CLI framework
-- [ratatui](https://github.com/ratatui-org/ratatui) - TUI framework
-- [rayon](https://github.com/rayon-rs/rayon) - Parallel processing
-- And many more amazing crates!
 
 ---
 
-**Made with ❤️ for developers, by developers.**
+## 🖥️ The Interface
 
-[Website](https://devutils.ai) | [Documentation](https://docs.devutils.ai) | [Discord](https://discord.gg/devutils)
+DevUtils features a **Premium Interactive TUI** (lazygit-style) that brings your terminal to life. Monitor agents in real-time, browse semantic search results, and manage your plugins with zero context switching.
+
+---
+
+## 💎 Core Workflows
+
+### 🔍 Semantic Search
+Stop searching for strings. Search for **intent**.
+`devutils search "how do we handle database migrations?"`
+
+### 🛠️ Auto-Fix (CI Bridge)
+Integrate DevUtils into your CI. When a build fails, the agent automatically:
+1.  Parses the logs.
+2.  Locates the bug.
+3.  Proposes a verified fix.
+4.  Submits a PR.
+
+### 🧪 Forensic Bug Hunter
+Deep property-based testing. DevUtils generates real `proptest` harnesses to find edge cases you never thought of.
+
+---
+
+## 🤝 Contributing & Viral Community
+We're building the future of autonomous development. Join the **DevUtils Marketplace** or help us harden the agent engine.
+
+**Star the repo if you're tired of manual developer workflows! ⭐**
+
+---
+
+[Documentation](README.md) | [Installation Guide](INSTALL.md) | [AI Agent Workflows](src/ultimate_agent.rs) | [Plugin Marketplace](plugins/README.md)
