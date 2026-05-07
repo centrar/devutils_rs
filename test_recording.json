@@ -1,0 +1,13 @@
+{
+  "id": "rec_18a7a21d",
+  "title": "Terminal Session",
+  "created_at": 1776566824,
+  "duration_secs": 0,
+  "events": [],
+  "metadata": {
+    "os": "windows",
+    "shell": "powershell",
+    "devutils_version": "1.0.0",
+    "exit_code": null
+  }
+}

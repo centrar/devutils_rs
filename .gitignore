@@ -1,0 +1,13 @@
+/target
+**/*.rs.bk
+.devutils/transcripts
+.devutils/checkpoints
+.test_dir
+test_ci.log
+check_err.txt
+output.png
+test.png
+.devutils_auth.json
+*.log
+.DS_Store
+Thumbs.db

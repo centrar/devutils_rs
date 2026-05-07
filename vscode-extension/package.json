@@ -1,0 +1,106 @@
+{
+  "name": "devutils",
+  "displayName": "DevUtils - AI Developer CLI",
+  "description": "AI-powered autonomous developer CLI with multi-file editing, test validation, and self-correction",
+  "version": "1.0.0",
+  "publisher": "devutils",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "AI",
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onCommand:devutils.autonomous",
+    "onCommand:devutils.chat",
+    "onCommand:devutils.generate"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "devutils.autonomous",
+        "title": "DevUtils: Run Autonomous Agent"
+      },
+      {
+        "command": "devutils.chat",
+        "title": "DevUtils: Chat with AI"
+      },
+      {
+        "command": "devutils.generate",
+        "title": "DevUtils: Generate Code"
+      },
+      {
+        "command": "devutils.explain",
+        "title": "DevUtils: Explain Code"
+      },
+      {
+        "command": "devutils.fix",
+        "title": "DevUtils: Fix Errors"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "devutils.explain",
+          "group": "devutils",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "devutils.fix",
+          "group": "devutils",
+          "when": "editorHasSelection"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "devutils.autonomous",
+          "group": "devutils"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "DevUtils",
+      "properties": {
+        "devutils.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "OpenAI API Key (or set OPENAI_API_KEY env var)"
+        },
+        "devutils.provider": {
+          "type": "string",
+          "default": "openai",
+          "enum": [
+            "openai",
+            "nvidia",
+            "deepseek",
+            "ollama"
+          ],
+          "description": "AI Provider to use"
+        },
+        "devutils.verbose": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable verbose output"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts,tsx"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0",
+    "eslint": "^8.54.0"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
+}

@@ -1,0 +1,63 @@
+name: DevUtils Agent
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request:
+    types: [opened, synchronize]
+  workflow_dispatch:
+    inputs:
+      command:
+        description: 'Command to run'
+        required: true
+        default: 'autonomous "fix a bug"'
+      model:
+        description: 'AI model to use'
+        required: false
+        default: 'claude-sonnet'
+
+jobs:
+  devutils:
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '/devutils')) ||
+      (github.event_name == 'pull_request')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install DevUtils
+        run: |
+          cargo build --release
+          echo "${{ github.workspace }}/target/release/devutils" >> $GITHUB_PATH
+
+      - name: Run DevUtils
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            CMD="${{ github.event.inputs.command }}"
+          elif [ "${{ github.event_name }}" == "issue_comment" ]; then
+            CMD=$(echo "${{ github.event.comment.body }}" | sed 's/.*\/devutils //')
+          else
+            CMD="autonomous \"Review PR changes\""
+          fi
+          
+          echo "Running: $CMD"
+          eval $CMD
+
+      - name: Create PR Comment
+        if: github.event_name == 'issue_comment'
+        run: |
+          gh pr comment "${{ github.event.pull_request.number }}" \
+            --body "🤖 DevUtils completed: ${{ steps.devutils.outputs.result }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

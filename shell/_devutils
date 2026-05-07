@@ -1,0 +1,59 @@
+#compdef devutils
+
+local -a commands
+commands=(
+  'search:AI semantic code search'
+  'find:Find files by name'
+  'grep:Fast grep replacement'
+  'complete:AI code completion'
+  'refactor:Refactor with patterns'
+  'ai:AI assistant'
+  'explain:Explain code'
+  'generate:Generate code'
+  'debug:Find and fix bugs'
+  'tests:Generate tests'
+  'plugin:Plugin management'
+  'status:Git status'
+  'commits:Recent commits'
+  'branches:List branches'
+  'commit:Create commit'
+  'push:Push to remote'
+  'docker:Docker commands'
+  'k8s:Kubernetes commands'
+  'run:Run project'
+  'test:Run tests'
+  'build:Build project'
+  'project:Project info'
+  'system:System info'
+  'interactive:Interactive TUI'
+  'benchmark:Run benchmarks'
+  'version:Show version'
+  'help:Show help'
+)
+
+if (( CURRENT == 1 )); then
+  _describe 'command' commands
+  return
+fi
+
+case "$words[1]"; in
+  search)
+    _arguments '1::query' '--semantic'
+    ;;
+  find)
+    _arguments '1::pattern'
+    ;;
+  grep)
+    _arguments '1::pattern'
+    ;;
+  ai)
+    local -a ai_commands
+    ai_commands=(
+      'generate:Generate code'
+      'explain:Explain code'
+      'debug:Fix bugs'
+      'tests:Generate tests'
+    )
+    _describe 'ai command' ai_commands
+    ;;
+esac
